@@ -20,6 +20,7 @@
 public class Command
 {
     private CommandWord commandWord;
+    private Direction direction; 
     private String secondWord;
 
     /**
@@ -29,9 +30,9 @@ public class Command
      *                  was not recognised.
      * @param secondWord The second word of the command. May be null.
      */
-    public Command(CommandWord commandWord, String secondWord)
-    {
+     public Command(CommandWord commandWord, Direction direction, String secondWord) {
         this.commandWord = commandWord;
+        this.direction = direction;
         this.secondWord = secondWord;
     }
 
@@ -42,6 +43,10 @@ public class Command
     public CommandWord getCommandWord()
     {
         return commandWord;
+    }
+    
+    public Direction getDirection() {
+        return direction;
     }
 
     /**

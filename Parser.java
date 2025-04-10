@@ -38,6 +38,7 @@ public class Parser
         String inputLine;   // will hold the full input line
         String word1 = null;
         String word2 = null;
+        Direction direction = null;
 
         System.out.print("> ");     // print prompt
 
@@ -53,7 +54,15 @@ public class Parser
             }
         }
 
-        return new Command(commands.getCommandWord(word1), word2);
+        try {
+            direction = Direction.valueOf(word2.toUpperCase()); // Try converting the second word into Direction
+        } catch (IllegalArgumentException e) {
+            // If it's not a valid direction, it will remain null
+        }
+
+        // Create and return the Command object
+        CommandWord commandWord = commands.getCommandWord(word1);
+        return new Command(commandWord, direction, word2); 
     }
 
     /**

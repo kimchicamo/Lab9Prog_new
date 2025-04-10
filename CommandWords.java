@@ -1,4 +1,6 @@
+// game.CommandWord; 
 import java.util.HashMap;
+
 
 /**
  * This class is part of the "World of Zuul" application. 
@@ -24,8 +26,8 @@ public class CommandWords
     { //Q36 
         validCommands = new HashMap<>();
         validCommands.put("marcha", CommandWord.GO);
-        validCommands.put("salir", CommandWord.QUIT);
-        validCommands.put("asistencia", CommandWord.HELP);
+         validCommands.put("salir", CommandWord.QUIT);
+         validCommands.put("asistencia", CommandWord.HELP);
         validCommands.put("mirar", CommandWord.LOOK);
     }
 

@@ -44,20 +44,20 @@ public class Game
         office = new Room("in the computing admin office");
 
         // initialise room exits
-        outside.setExit("east", theater);
-        outside.setExit("south", lab);
-        outside.setExit("west", pub);
+        outside.setExit(Direction.EAST, theater);
+        outside.setExit(Direction.SOUTH, lab);
+        outside.setExit(Direction.WEST, pub);
 
-        theater.setExit("west", outside);
+        theater.setExit(Direction.WEST, outside);
 
-        pub.setExit("east", outside);
+        pub.setExit(Direction.EAST, outside);
 
-        lab.setExit("north", outside);
-        lab.setExit("east", office);
+        lab.setExit(Direction.NORTH, outside);
+        lab.setExit(Direction.EAST, office);
 
-        office.setExit("west", lab);
-
-        currentRoom = outside;  // start game outside
+        office.setExit(Direction.WEST, lab);
+    
+        currentRoom = outside; // start game outside
     }
 
     /**
@@ -67,7 +67,7 @@ public class Game
     {            
         printWelcome();
 
-        // Enter the main command loop.  Here we repeatedly read commands and
+         // Enter the main command loop.  Here we repeatedly read commands and
         // execute them until the game is over.
 
         boolean finished = false;
@@ -83,7 +83,7 @@ public class Game
      */
     private void printWelcome()
     {
-        System.out.println();
+
         System.out.println("Welcome to the World of Zuul!");
         System.out.println("World of Zuul is a new, incredibly boring adventure game.");
         //Q37
@@ -151,23 +151,28 @@ public class Game
      * Try to go in one direction. If there is an exit, enter the new
      * room, otherwise print an error message.
      */
-    private void goRoom(Command command) 
-    {
-        if(!command.hasSecondWord()) {
-            // if there is no second word, we don't know where to go...
+    private void goRoom(Command command) {
+        if (!command.hasSecondWord()) {
             System.out.println("Go where?");
             return;
         }
 
-        String direction = command.getSecondWord();
+        String directionString = command.getSecondWord().toUpperCase();  
+        
+        
+        Direction direction;
+        try {
+            direction = Direction.valueOf(directionString);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Invalid direction: " + directionString);
+            return;
+        }
 
-        // Try to leave current room.
         Room nextRoom = currentRoom.getExit(direction);
 
         if (nextRoom == null) {
-            System.out.println("There is no door!");
-        }
-        else {
+            System.out.println("There is no exit in that direction!");
+        } else {
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
         }
