@@ -25,7 +25,7 @@ public class CommandWords
         validCommands = new HashMap<>();
         validCommands.put("marcha", CommandWord.GO);
         validCommands.put("salir", CommandWord.QUIT);
-        validCommands.put("ayuda", CommandWord.HELP);
+        validCommands.put("asistencia", CommandWord.HELP);
         validCommands.put("mirar", CommandWord.LOOK);
     }
 
