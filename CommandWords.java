@@ -21,11 +21,12 @@ public class CommandWords
      * Constructor - initialise the command words.
      */
     public CommandWords()
-    {
+    { //Q36 
         validCommands = new HashMap<>();
-        validCommands.put("go", CommandWord.GO);
-        validCommands.put("help", CommandWord.HELP);
-        validCommands.put("quit", CommandWord.QUIT);
+        validCommands.put("marcha", CommandWord.GO);
+        validCommands.put("salir", CommandWord.QUIT);
+        validCommands.put("ayuda", CommandWord.HELP);
+        validCommands.put("mirar", CommandWord.LOOK);
     }
 
     /**
@@ -39,7 +40,7 @@ public class CommandWords
         CommandWord command = validCommands.get(commandWord);
         if(command != null) {
             return command;
-        }
+         }
         else {
             return CommandWord.UNKNOWN;
         }
