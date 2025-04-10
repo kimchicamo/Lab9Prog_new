@@ -118,12 +118,20 @@ public class Game
             case QUIT:
                 wantToQuit = quit(command);
                 break;
+            //Q35   
+            case LOOK:  
+                lookAround();
+                break;
         }
         return wantToQuit;
     }
-
+    //Q35
+    private void lookAround() {
+        System.out.println(currentRoom.getLongDescription());
+    }
+    
     // implementations of user commands:
-
+    
     /**
      * Print out some help information.
      * Here we print some stupid, cryptic message and a list of the 
